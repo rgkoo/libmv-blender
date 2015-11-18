@@ -1,0 +1,11 @@
+SET(BUNDLER_LIB_DIR ${3RD_DIR}/bundler-v0.4-source/vc++/Debug)
+file(GLOB lib_files ${BUNDLER_LIB_DIR}/*.lib)
+foreach(lib_file ${lib_files})
+  set(BUNDLER_LIBRARIES ${BUNDLER_LIBRARIES} debug ${lib_file})
+endforeach()
+
+SET(BUNDLER_LIB_DIR ${3RD_DIR}/bundler-v0.4-source/vc++/Release)
+file(GLOB lib_files ${BUNDLER_LIB_DIR}/*.lib)
+foreach(lib_file ${lib_files})
+  set(BUNDLER_LIBRARIES ${BUNDLER_LIBRARIES} optimized ${lib_file})
+endforeach()

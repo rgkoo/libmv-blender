@@ -22,6 +22,7 @@ ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
 IF (WIN32)
   ADD_LIBRARY(glog
+              ${libs_build_status}
               logging.cc
               windows/port.cc
               raw_logging.cc

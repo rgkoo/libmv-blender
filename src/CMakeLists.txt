@@ -19,6 +19,9 @@
 # IN THE SOFTWARE.
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
+#koo add, force to build static libs 
+set(libs_build_status STATIC)
+
 
 IF (COMMAND cmake_policy)
   cmake_policy(SET CMP0003 OLD)
@@ -29,11 +32,21 @@ PROJECT(LIBMV C CXX)
 
 ENABLE_TESTING()
 
+set(QT_SEARCH_PATH "" CACHE PATH "Prefix prepended to Qt")
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${QT_SEARCH_PATH})
+set(GLEW_DIR "" CACHE PATH "Prefix prepended to GLEW")
+
+
+
 SET(CMAKE_MODULE_PATH
   "${LIBMV_SOURCE_DIR}/CMake"
   "${LIBMV_SOURCE_DIR}/CMake/modules"
-  "${LIBMV_SOURCE_DIR}/third_party/ceres/cmake")
-
+  "${LIBMV_SOURCE_DIR}/third_party/ceres/cmake"
+  "${LIBMV_SOURCE_DIR}/CMake/acmake")
+include(acmake_append_runtime_dirs)
+include(acmake_copy_dependencies)
+set(bin_dirs ${QT_SEARCH_PATH}/bin
+  ${GLEW_DIR}/bin)
 INCLUDE(LibmvVersion)
 
 SET(LIBMV_SOURCE_DIR  ${CMAKE_CURRENT_SOURCE_DIR})

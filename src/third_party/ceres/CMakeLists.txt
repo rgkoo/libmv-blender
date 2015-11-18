@@ -535,7 +535,6 @@ IF (CMAKE_BUILD_TYPE STREQUAL "Release")
 ENDIF (CMAKE_BUILD_TYPE STREQUAL "Release")
 
 SET (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CERES_CXX_FLAGS}")
-
 # After the tweaks for the compile settings, disable some warnings on MSVC.
 IF (MSVC)
   # Disable signed/unsigned int conversion warnings.
@@ -575,6 +574,7 @@ IF (MSVC)
 
   FOREACH(FLAG_VAR ${C_CXX_FLAGS})
     IF (MSVC_USE_STATIC_CRT)
+
       # Use static CRT.
       IF (${FLAG_VAR} MATCHES "/MD")
         STRING(REGEX REPLACE "/MD" "/MT" ${FLAG_VAR} "${${FLAG_VAR}}")

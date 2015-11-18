@@ -21,6 +21,9 @@
 ** IN THE SOFTWARE.
 **
 ****************************************************************************/
+#ifdef WIN32
+	#include <Windows.h>
+#endif
 
 #include "ui/tracker/gl.h"
 

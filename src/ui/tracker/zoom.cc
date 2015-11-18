@@ -47,7 +47,7 @@ void Zoom::paintGL() {
   if (tracks_.count() == 0) return;
   // FIXME: There are probably better way to do this.
   // Maximal estimate using available area
-  int size = sqrt(width()*height()/tracks_.count());
+  int size = sqrtf(width()*height()/tracks_.count());
   int columns = width()/size;
   for(int rows = height()/size; columns*rows < tracks_.count();) {
     size--;

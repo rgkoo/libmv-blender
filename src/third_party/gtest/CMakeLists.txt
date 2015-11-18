@@ -4,6 +4,7 @@ INCLUDE_DIRECTORIES(
 )
 
 ADD_LIBRARY(gtest
+			${libs_build_status}
             src/gtest.cc
             src/gtest-death-test.cc
             src/gtest-filepath.cc

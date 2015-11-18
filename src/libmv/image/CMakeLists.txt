@@ -25,10 +25,10 @@ SET(IMAGE_SRC array_nd.cc
 # define the header files (make the headers appear in IDEs.)
 FILE(GLOB IMAGE_HDRS *.h)
 
-ADD_LIBRARY(image ${IMAGE_SRC} ${IMAGE_HDRS})
+ADD_LIBRARY(image ${libs_build_status} ${IMAGE_SRC} ${IMAGE_HDRS})
 TARGET_LINK_LIBRARIES(image png jpeg glog)
 
-ADD_LIBRARY(image_io image_io.cc image_io.h)
+ADD_LIBRARY(image_io ${libs_build_status} image_io.cc image_io.h)
 TARGET_LINK_LIBRARIES(image_io image png jpeg glog)
 
 # make the name of debug libraries end in _d.
