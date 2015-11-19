@@ -27,6 +27,9 @@
 
 #ifdef USE_FFMPEG
 extern "C" {
+#ifndef __STDC_CONSTANT_MACROS
+#  define __STDC_CONSTANT_MACROS
+#endif
 #include <stdint.h>
 typedef uint64_t UINT64_C;
 #include <libavformat/avformat.h>

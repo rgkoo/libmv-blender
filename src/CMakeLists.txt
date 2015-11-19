@@ -35,7 +35,7 @@ ENABLE_TESTING()
 set(QT_SEARCH_PATH "" CACHE PATH "Prefix prepended to Qt")
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${QT_SEARCH_PATH})
 set(GLEW_DIR "" CACHE PATH "Prefix prepended to GLEW")
-
+set(FFMPEG_DIR "" CACHE PATH "Prefix prepended to FFMPEG")
 
 
 SET(CMAKE_MODULE_PATH

@@ -96,6 +96,7 @@ libmv::RegionTracker *NewHybridRegionTracker(int max_iterations, int half_window
 Tracker::Tracker(libmv::CameraIntrinsics* intrinsics) : intrinsics_(intrinsics),
     scene_(0), undistort_(false),
     current_(0), active_track_(-1), dragged_(false) {
+	
   setMinimumHeight(64);
 }
 
@@ -119,6 +120,7 @@ void Tracker::Save(QString path) {
 inline float sqr(float x) { return x*x; }
 void Tracker::SetImage(int id, QImage image) {
   makeCurrent();
+  glInitialize();
   current_ = id;
   image_ = image;
 #ifdef LENS_DISTORTION
@@ -134,6 +136,7 @@ void Tracker::SetImage(int id, QImage image) {
   {
     texture_.upload(image);
   }
+  
   upload();
   emit trackChanged(selected_tracks_);
 }

@@ -108,7 +108,7 @@ void Calibration::updateSettings() {
                .arg(Value(2)).arg(Value(3))
                .arg(Value(4)).arg(Value(5))
                .arg(Value(6)).arg(Value(7))
-               .arg(Value(8)).arg(Value(9)).arg(Value(10)) .toAscii());
+               .arg(Value(8)).arg(Value(9)).arg(Value(10)) .toLatin1());
   }
 
   emit settingsChanged();

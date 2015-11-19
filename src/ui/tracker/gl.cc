@@ -57,6 +57,7 @@ void glInitialize() {
 #ifdef GLEW
   glewInit();
 #endif
+  
 #ifdef WIN32
   wglSwapIntervalEXT(1);
 #else
@@ -64,6 +65,7 @@ void glInitialize() {
   glXSwapIntervalSGI(1);
 #endif
 #endif
+  
 }
 
 void GLUniform::operator=(int v) {
@@ -104,8 +106,8 @@ bool compileShader(int program, int type, QByteArray source) {
 }
 bool GLShader::compile(QString vertex, QString fragment) {
     if(!id) id = glCreateProgram();
-    compileShader(id,GL_VERTEX_SHADER,vertex.toAscii());
-    compileShader(id,GL_FRAGMENT_SHADER,fragment.toAscii());
+    compileShader(id,GL_VERTEX_SHADER,vertex.toLatin1());
+    compileShader(id,GL_FRAGMENT_SHADER,fragment.toLatin1());
     glLinkProgram(id);
     int status; glGetProgramiv(id,GL_LINK_STATUS,&status);
     if(status==GL_TRUE) return true;
@@ -143,7 +145,7 @@ void GLBuffer::upload(const void* data, int count) {
                GL_STATIC_DRAW);
   indexCount = count;
 }
-
+#include <iostream>
 void GLBuffer::upload(const void* data, int count, int size) {
   if (!vertexBuffer) glGenBuffers(1, &vertexBuffer);
   glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
